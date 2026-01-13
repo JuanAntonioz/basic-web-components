@@ -16,7 +16,7 @@ class MyCustomElement extends HTMLElement {
       <section>
         <h2>Title</h2>
         <div>
-          <p>message</p>
+          <slot></slot>
         </div>
       </section>
       ${this.getStyles()}
