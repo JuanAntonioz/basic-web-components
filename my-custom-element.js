@@ -14,9 +14,11 @@ class MyCustomElement extends HTMLElement {
 		const template = document.createElement("template");
 		template.innerHTML = `
       <section>
-        <h2>Title</h2>
+        <h2>
+          <slot name="title"></slot>
+        </h2>
         <div>
-          <slot></slot>
+          <slot name="body"></slot>
         </div>
       </section>
       ${this.getStyles()}
