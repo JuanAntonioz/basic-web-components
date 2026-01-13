@@ -1,0 +1,11 @@
+{
+  "name": "basic-web-components",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  },
+  "scripts": {
+    "format": "biome format --write .",
+    "check": "biome check ."
+  }
+}
