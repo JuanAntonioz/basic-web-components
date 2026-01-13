@@ -4,6 +4,10 @@ class MyCustomElement extends HTMLElement {
 		 * Provide access to the methods and properties of the HTMLElement class
 		 */
 		super();
+
+		this.attachShadow({
+			mode: "open",
+		});
 	}
 
 	getTemplate() {
@@ -24,14 +28,14 @@ class MyCustomElement extends HTMLElement {
 		return `
       <style>
         h2 {
-          color: orange;
+          color: brown;
         }
       </style>
     `;
 	}
 
 	render() {
-		this.appendChild(this.getTemplate().content.cloneNode(true));
+		this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
 	}
 
 	connectedCallback() {
