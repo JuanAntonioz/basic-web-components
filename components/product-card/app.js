@@ -4,6 +4,24 @@ class ProductCard extends HTMLElement {
     this.attachShadow({ mode: "open"})
   }
 
+  static get observedAttributes (){
+    return ["img", "title", "price", "description", "collection", "tags"];
+  }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if(attr === "tags") {
+      try {
+        this.tags = JSON.parse(newValue)||[];
+      }
+      catch {
+        this.tags = [];
+      }
+    } else {
+      this[attr] = newValue;
+    }
+  }
+
   getStyles (){
     return `
       <style>
@@ -182,9 +200,6 @@ class ProductCard extends HTMLElement {
         .product-card__actions {
           font-size: 0.9rem;
         }
-
-
-
       </style>
     `
   }
@@ -194,17 +209,15 @@ class ProductCard extends HTMLElement {
     template.innerHTML = `
       <article class="product-card">
         <figure class="product-card__media">
-          <img src="./assets/sku-MX442.png" />
+          <img src="${this.img}" alt="${this.title}" />
         </figure>
         <div class="product-card__content">
           <header class="product-card__header">
-            <h2 class="product-card__title">Beats Studio Pro</h2>
-            <p class="product-card__price">$349.99</p>
+            <h2 class="product-card__title">${this.title}</h2>
+            <p class="product-card__price">$${this.price}</p>
           </header>
           <ul class="product-card__tags">
-            <li><span>USB C</span></li>
-            <li><span>Noise Cancelling</span></li>
-            <li><span>Transparency Mode</span></li>
+            ${this.tags.map((tag)=> `<li><span>${tag}</span></li>`).join("")}
           </ul>
 
           <section class="product-card__description">
