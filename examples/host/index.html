@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Examples</title>
+</head>
+<body>
+    <!-- With article parent -->
+    <my-custom-element img="https://picsum.photos/300/500">
+      <span slot="product-name">Apple iPhone 15 Pro</span>
+      <span slot="product-list-price">999.00</span>
+      <span slot="product-selling-price">899.00</span>
+    </my-custom-element>
+
+    <my-custom-element class="dark-theme" img="https://picsum.photos/300/500">
+      <span slot="product-name">LG Smart TV</span>
+      <span slot="product-list-price">999.00</span>
+      <span slot="product-selling-price">899.00</span>
+    </my-custom-element>
+
+    <my-custom-element withoutImage img="https://picsum.photos/300/500">
+      <span slot="product-name">LG Smart TV</span>
+      <span slot="product-list-price">999.00</span>
+      <span slot="product-selling-price">899.00</span>
+    </my-custom-element>
+
+    <article class="fullwidth">
+      <my-custom-element img="https://picsum.photos/300/500">
+        <span slot="product-name">Apple iPhone 15 Pro</span>
+        <span slot="product-list-price">999.00</span>
+        <span slot="product-selling-price">899.00</span>
+      </my-custom-element>
+    </article>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
