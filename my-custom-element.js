@@ -41,8 +41,17 @@ class MyCustomElement extends HTMLElement {
 	getStyles() {
 		return `
       <style>
+        :host {
+          display: inline-block;
+          margin: 0;
+        }
+        :host(.dark-theme) .product-card-container {
+          background-color: #979797;
+        }
+        :host([withoutImage]) .product-card-image {
+          display: none;
+        }
         body, html {
-          font-family: sans-serif, tahoma, arial;
           font-size: 16px;
         }
         * {
@@ -61,6 +70,8 @@ class MyCustomElement extends HTMLElement {
         }
         .product-card-image {
           border-radius: 10px;
+          display:block;
+          border: none;
           width: 100%;
         }
         .product-card-title {
